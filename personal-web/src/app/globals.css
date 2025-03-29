@@ -3,6 +3,9 @@
 
 @import "tailwindcss";
 
+html{
+  font-size:16px;
+}
 
 :root {
   --background: #112441;
@@ -17,3 +20,72 @@ body {
   background: var(--background);
   font-family: var(--font-sans);
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 12rem;
+  background: var(--background);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  width: 70%;
+  padding: 2rem 0 ;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  font-weight: 600;
+}
+
+.nav-links li {
+  position: relative; /* Needed for the pseudo-element */
+  cursor: pointer;
+  padding: 5px 0;
+  font-size: 18px;
+  color: var(--text-color);
+  transition: color 0.3s ease-in-out; /* Smooth text color change */
+}
+
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2; /* Adjust if needed */
+  width: 0%;
+  height: 2px;
+  background-color: var(--emphasis);
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links li:hover{
+  color: var(--emphasis); 
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+/* Push content down so it's not hidden under navbar */
+.content {
+  margin-top: 10rem;
+  padding: 60px;
+}
+

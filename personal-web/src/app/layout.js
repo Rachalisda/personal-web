@@ -16,12 +16,28 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body
-        className={`ml-15 mr-15 ${poppins.variable} antialiased`}
-      >
+        className={`m-15 ${poppins.variable} antialiased`}>
+        {/* Navigation Bar */}
+        <nav className="navbar">
+          <div className="nav-container">
+            <h1 className="logo">Rachal's Place</h1>
+            <ul className="nav-links">
+              <li>Home</li>
+              <li>About</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+        </nav>
+        
+         {/* Main Content */}
+        <div className="scroll-container content">
         {children}
+      </div>
+      
       </body>
     </html>
   );
