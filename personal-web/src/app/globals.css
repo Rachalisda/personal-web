@@ -4,7 +4,10 @@
 @import "tailwindcss";
 
 html{
-  font-size:16px;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -14,6 +17,47 @@ html{
   --emphasis-shadow: #c68328;
   --text-color: #ede7dd;
   --font-sans: 'Poppins', sans-serif;
+}
+
+.page-style{
+  background: var(--background);
+  height: 100vh;
+}
+
+/* For Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  margin-top: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4); 
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.6);
+}
+
+/* Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 100, 100, 0.4) transparent;
+}
+
+
+.container{
+  width: 95%;
+  height: 80vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
 }
 
 body {
@@ -85,7 +129,14 @@ body {
 
 /* Push content down so it's not hidden under navbar */
 .content {
-  margin-top: 10rem;
-  padding: 60px;
+  margin-top: 20rem;
 }
 
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+.fade-in.active {
+  opacity: 1;
+}
