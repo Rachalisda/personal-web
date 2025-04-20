@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function AboutPage() {
   return (
-    <main className="bg-[var(--background)] text-[var(--text-color)] min-h-screen px-8 py-16">
+    <main className="bg-[var(--background)] text-[var(--text-color)] min-h-screen px-8 py-16 flex flex-col justify-center items-center">
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center gap-10 mb-20">
         <div className="w-40 h-40 relative rounded-full overflow-hidden shadow-lg">

@@ -132,7 +132,17 @@ export default function Page() {
 
       </div>
 
-
+     {/* Call to Action */}
+     <section className="text-center py-10 border-t border-[var(--foreground)]">
+        <h2 className="text-2xl font-bold mb-4">Let’s Work Together</h2>
+        <p className="text-md mb-6">Got a project or idea? I’d love to hear it and bring it to life with data and design.</p>
+        <a
+          href="/contact"
+          className="inline-block bg-[var(--emphasis)] text-[var(--background)] px-6 py-3 rounded-full hover:bg-[var(--emphasis-shadow)] transition"
+        >
+          Contact Me
+        </a>
+      </section>
 
 
 
