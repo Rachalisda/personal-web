@@ -1,82 +1,66 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const projects = [
-  {
-    title: 'Commission Calculator',
-    description:
-      'A dynamic Excel + dashboard tool for sales tracking, KPI metrics, and commissions, built with automation in mind.',
-    tech: ['Excel', 'VBA', 'Data Viz'],
-    image: '/images/commission-tool.png', // Swap with your image or leave blank
-    link: '#',
-  },
-  {
-    title: 'Big Biller KPI Dashboard',
-    description:
-      'Custom-built dashboard that integrates with Big Biller to track performance metrics and automate data reporting.',
-    tech: ['Looker Studio', 'Big Biller API', 'ETL'],
-    image: '/images/kpi-dashboard.png',
-    link: '#',
-  },
-  {
-    title: 'Personal Data Pipeline',
-    description:
-      'Local SQL + scripting project to automate data cleaning and transformation from API sources into visual dashboards.',
-    tech: ['SQL', 'Python', 'ETL'],
-    image: '/images/data-pipeline.png',
-    link: '#',
-  },
-];
+// Utility to clean up repo names like "personal-web" → "Personal Web"
+function formatTitle(name) {
+  return name
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
 
 export default function ProjectsPage() {
-  return (
-    <main className="bg-[var(--background)] text-[var(--text-color)] min-h-screen px-8 py-16">
-      <h1 className="text-4xl font-bold text-center mb-16 text-[var(--emphasis)]">My Projects</h1>
+  const [repos, setRepos] = useState([]);
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projects.map((project, idx) => (
-          <div
-            key={idx}
-            className="bg-[var(--foreground)] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
-          >
-            {project.image && (
-              <div className="relative w-full h-48">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            )}
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2">{project.title}</h2>
-              <p className="text-sm mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 text-xs mb-4">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="bg-[var(--background)] border border-[var(--text-color)] rounded-full px-3 py-1"
-                  >
-                    {tech}
+  useEffect(() => {
+    fetch('/api/repos')
+      .then((res) => {
+        console.log('Response status:', res.status);
+        return res.json();
+      })
+      .then((data) => {
+        console.log('Fetched repos:', data); // 🔍 check this
+        setRepos(data);
+      })
+      .catch((err) => console.error('Failed to load repos', err));
+  }, []);
+
+  return (
+    <main className="p-8 text-white">
+      <h1 className="text-3xl font-bold mb-6">My GitHub Repos</h1>
+
+      {repos.length === 0 ? (
+        <p>Loading or no repos found...</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {repos.map((repo) => (
+            <div key={repo.id} className="bg-gray-800 p-4 rounded-md shadow-md">
+              <h2 className="text-lg font-semibold mb-2">{formatTitle(repo.name)}</h2>
+              <p className="text-sm mb-2">{repo.description || 'No description provided.'}</p>
+              <div className="flex flex-wrap gap-2 text-xs mb-2">
+                {repo.language && (
+                  <span className="bg-gray-700 border border-gray-500 rounded-full px-3 py-1">
+                    {repo.language}
                   </span>
-                ))}
+                )}
+                <span className="bg-gray-700 border border-gray-500 rounded-full px-3 py-1">
+                  ⭐ {repo.stargazers_count}
+                </span>
               </div>
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  className="text-[var(--emphasis)] text-sm font-medium underline"
-                >
-                  View Project →
-                </a>
-              )}
+              <a
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 text-sm underline"
+              >
+                View on GitHub →
+              </a>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </main>
+
   );
 }
