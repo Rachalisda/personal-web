@@ -1,152 +1,111 @@
 import React from 'react';
 import Button from './styles/button';
-
-
+import Card from './styles/card';
 
 export default function Page() {
   return (
     <div className="page-style">
-      <div className="bg-[var(--background)]">
-      <div className=" container">
-        <div className="text-left p-8 w-[500px] ">
-          <h1 className="fade-in active text-6xl font-bold text-[var(--text-color)] mb-7">
-           Love Data and Reports?
-          </h1>
-          <p className="text-lg text-[var(--text-color)] mb-25 relative">
-            We have what you need. More content is coming soon.
-            {/* Underline element */}
-            <span className="absolute left-0 bottom-[-45px] w-[50%] h-[2px] bg-[var(--text-color)] opacity-50"></span>
+         <div className="bg-[var(--background)]">
+        {/* Container: sets up stacking for hero and content */}
+        <div className="container relative overflow-hidden md:overflow-visible mx-auto flex flex-col md:flex-row items-start min-h-[400px] md:min-h-auto">
+
+          {/* Main Content: above hero */}
+          <div className="relative z-10 p-8 w-full md:w-[5000px]">
+            <h1>Love Data and Reports?</h1>
+            <p className="text-lg text-[var(--text-color)] mb-6 relative">
+              We have what you need. More content is coming soon.
+              <span className="absolute left-0 bottom-[-10px] w-[50%] h-[2px] bg-[var(--text-color)] opacity-50"></span>
             </p>
-          <Button variant="primary">OK!</Button>
+            <Button variant="primary">OK!</Button>
+          </div>
+
+       {/* Hero Section: behind content on small screens, floats right on md+ */}
+          <div className="absolute inset-0 z-0 h-[400px] w-full
+                          md:static md:inset-auto md:h-[400px] md:w-auto md:ml-20 md:mr-60">
+            <div className="bg-[var(--foreground)] h-full w-full p-10 rounded-lg shadow-lg">
+              {/* Hero content */}
+            </div>
+          </div>
+
         </div>
-        
-        {/* Hero Section */}
-        <div className="bg-[var(--foreground)]  h-[400px] mr-60 ml-20 p-10 rounded-lg shadow-lg flex-1 min-h-[300px]">
-          {/* Additional content goes here */}
+      </div>
+
+<section className="bg-[var(--background)] py-12 p-16">
+       <h1>
+        Main 3 Projects
+       </h1>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-8">
+            {/* Analysis card */}
+            <div className="w-full md:w-1/3 flex justify-center">
+              <Card
+                title="Project"
+                topBarLight={3}
+                topBarDark={3}
+                variant="light" 
+                secondDots={false}
+                footer={
+                  <>
+                    <div className="bg-[var(--text-color)] flex-1 h-24 rounded" />
+                  </>
+                }
+              >
+                Then I’m gonna analyze something else.
+              </Card>
+            </div>
+
+             {/* Analysis card */}
+            <div className="w-full md:w-1/3 flex justify-center">
+              <Card
+                title="Analysis"
+                topBarLight={3}
+                topBarDark={3}
+                footer={
+                  <>
+                    <div className="bg-[var(--foreground)] flex-1 h-24 rounded" />
+                  </>
+                }
+              >
+                Then I’m gonna analyze something else.
+              </Card>
+            </div>
+
+
+
+             {/* Analysis card */}
+            <div className="w-full md:w-1/3 flex justify-center">
+              <Card
+                title="Project"
+                topBarLight={3}
+                topBarDark={3}
+                variant='dark'
+                secondDots={false}
+                footer={
+                  <>
+                    <div className="bg-[var(--foreground)] flex-1 h-24 rounded" />
+                  </>
+                }
+              >
+                Then I’m gonna analyze something else.
+              </Card>
+            </div>
+          </div>
+          
         </div>
-      </div>
-      </div>
+        <p className="p-10 text-[var(--text-color)]">These are the top ones, but theres more</p>
+      <Button variant="secondary">Take me to More</Button>
 
-
-      {/* Next content */}
-      <div className='bg-[var(--background)]'>
-         <div className='bg-[var(--background)] container m-20'>
-
-          {/* project do-dads*/}
-          <div className='bg-[var(--background)] w-[55%] h-[100%] flex flex flex-col justify-center items-left'>
-              <div className='bg-[var(--text-color)] w-[60%] h-[45%] rounded-2xl m-20 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all'>
-              <div className='bg-gray-300 h-8 rounded-t-2xl mb-4'>
-                <div className='flex space-x-2 ml-1.5'>
-                  <div className='w-2 h-2 rounded-full bg-[var(--background)] m-2'></div>
-                  <div className='w-2 h-2 rounded-full bg-[var(--background)] mr-2 mt-2'></div>
-                  <div className='w-2 h-2 rounded-full bg-[var(--background)] mt-2'></div>
-                </div>
-                <div className='m-10 flex flex-row'>
-                  <div className='flex flex-col w-[800px] h-[100%]'>
-                  <h1 className='font-bold text-2xl'>Housing Analysis</h1>
-                    <div >I'm gonna analyze a bunch of houses and put my findings here</div>
-                  </div>
-                <div className='bg-[var(--background)] w-[800px] h-[210px]'></div>
-                <div className='m-3 w-[40px] text-xs'>
-                  Data Wrangling<br></br><br></br>Api<br></br><br></br>Modeling
-                </div>
-                </div>
-
-              </div>
-              </div>
-
-
-              <div className='bg-[var(--background)] w-[70%] h-[30%] rounded-2xl ml-20 mb-20 shadow-2xl hover:shadow-2xl hover:scale-105 transition-all'>
-              <div className='bg-gray-300 h-8 rounded-t-2xl'>
-              <div className='flex justify-between items-center h-full px-3'>
-                <div className='flex space-x-2'>
-                  <div className='w-2 h-2 rounded-full bg-[var(--background)]'></div>
-                  <div className='w-2 h-2 rounded-full bg-[var(--background)]'></div>
-                  <div className='w-2 h-2 rounded-full bg-[var(--background)]'></div>
-                </div>
-
-                <div className='flex space-x-2'>
-                  <div className='w-2 h-2 rounded-full bg-[var(--text-color)]'></div>
-                  <div className='w-2 h-2 rounded-full bg-[var(--text-color)]'></div>
-                  <div className='w-2 h-2 rounded-full bg-[var(--text-color)]'></div>
-                </div>
-              </div>
-              <div className='m-10 flex flex-row text-[var(--text-color)] h-[120px]'>
-                <div className='flex flex-col w-[500px] h-full justify-between'>
-                  <h1 className='font-bold text-2xl'>Analysis</h1>
-                  <div>Then I'm gonna analyze something else</div>
-                </div>
-
-                <div className='bg-[var(--foreground)] w-[800px] h-full mr-5'></div>
-
-                <div className=' w-[400px] border border-gray-300 h-full'></div>
-              </div>
-            </div>
-                <div className='bg-[var(--foreground)] h-5 mb-4'></div>
-              </div>
-
-            </div>
-
-            {/* The right-most do-dad*/}
-            <div className='bg-[var(--foreground)] w-[100%] h-[65%] mt-30 rounded-2xl shadow-2xl hover:shadow-2xl hover:scale-105 transition-all'>   
-              <div className='bg-[var(--background)] w-[78%] h-[85%] m-10 flex justify-center items-center flex-col'>
-                <h1 className='text-[var(--text-color)] text-2xl mb-3'>Project</h1>
-                <div className='border border-gray-300 h-[20%] w-[40%]'></div>
-                
-                <div className='bg-[var(--foreground)] rounded-t-xl h-[5%] w-[70%] mt-3 flex justify-center items-left flex-col'>
-                  <p className='m-4 text-sm text-[var(--text-color)]'>Description</p>
-                </div>
-
-                <div className='bg-[var(--foreground)] rounded-b-xl h-[10%] w-[70%] mt-1 flex justify-center items-left flex-col'>
-                  <p className='m-4 text-sm text-[var(--text-color)]'>Does some interesting stuff here</p>
-                </div>
-
-                <div className='mt-4 flex flex-row h-[35%] w-[80%]'>
-                  <div className='border border-gray-300 h-[full] w-[30%] rounded-sm'></div>
-                  <div className='h-[full] w-[30%] ml-4'>
-                     <div className=' bg-[var(--foreground)] h-[60%] w-full flex flex-col rounded-sm'></div>
-                     <div className=' mt-2 bg-[var(--foreground)] h-[35%] w-full flex flex-col rounded-sm'></div>
-                  </div>
-                
-                  <div className='ml-4 bg-[var(--foreground)] rounded- h-[60%] w-[30%]'></div>
-                </div>
-
-              </div>
-            </div>
-          
-          
-
-            <div className='bg-[var(--background)] w-[75%] ml-10 mt-30 text-[var(--text-color)] text-base'>
-              <h1 className=' text-3xl'>Data Wrangling</h1>
-              <p className='mt-5 mb-5'>Projects related to data wrangling</p>
-            <Button variant="secondary">See More</Button>
-              
-            <h1 className=' text-3xl mt-20'>Analysis Reports</h1>
-              <p className='mt-5 mb-5'>Projects related to dashboard visualization and report creation</p>
-            <Button variant="secondary">See More</Button>
-            </div>
-
-
-       
-         </div>
-
-      </div>
-
-     {/* Call to Action */}
-     <section className="text-center py-10 border-t border-[var(--foreground)]">
-        <h2 className="text-2xl font-bold mb-4">Let’s Work Together</h2>
-        <p className="text-md mb-6">Got a project or idea? I’d love to hear it and bring it to life with data and design.</p>
-        <a
-          href="/contact"
-          className="inline-block bg-[var(--emphasis)] text-[var(--background)] px-6 py-3 rounded-full hover:bg-[var(--emphasis-shadow)] transition"
-        >
-          Contact Me
-        </a>
       </section>
 
+     {/* Call to Action */}
+     <section className="text-center py-10 bg-[var(--foreground)]">
+        <h2 className="text-2xl font-bold mb-4">Let’s Work Together</h2>
+        <p className="text-md mb-6">Got a project or idea? I’d love to hear it and bring it to life with data and design.</p>
+        
+        <Button variant="primary">Contact Me</Button>
 
+      </section>
 
-      
     </div>
   
   );

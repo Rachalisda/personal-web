@@ -3,6 +3,7 @@
 import { Poppins } from "next/font/google";
 import Link from "next/link"; // Import Link for routing
 import "./globals.css";
+import "./styles/footer";
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -18,9 +19,9 @@ export default function RootLayout({ children }) {
         <nav className="navbar">
           <div className="nav-container">
             {/* Logo that triggers navigation */}
-            <h1 className="logo">
+            <div className="logo">
               <Link href="/">Rachal's Place</Link> {/* Link to Home */}
-            </h1>
+            </div>
             <ul className="nav-links">
               <li>
                 <Link href="/">Home</Link> {/* Link to Home */}
@@ -42,7 +43,9 @@ export default function RootLayout({ children }) {
         <div className="scroll-container content">
           {children}
         </div>
+        
       </body>
+      
     </html>
   );
 }
