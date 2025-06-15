@@ -3,6 +3,8 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import NotFound from './../../styles/readme-not-found';
+import BackButton from '@/app/styles/back-button'; // adjust path if needed
+
 
 export async function generateStaticParams() {
   const repos = require('@/app/data/github-repos.json');
@@ -13,6 +15,7 @@ export default async function ProjectPage({ params }) {
   const { name } = params;
   const url = `https://raw.githubusercontent.com/Rachalisda/${name}/main/README.md`;
   const res = await fetch(url);
+  
   if (!res.ok) {
   return <NotFound repoName={name} />;
   }
@@ -20,9 +23,7 @@ export default async function ProjectPage({ params }) {
 
   return (
     <div className="prose dark:prose-invert mx-auto p-8">
-      <Link href="/projects" className="text-blue-600 hover:underline mb-4 inline-block">
-        ← Back to Projects
-      </Link>
+      <BackButton />
       <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{
         img: ({ src, alt }) => {
           const path = src.startsWith('http')

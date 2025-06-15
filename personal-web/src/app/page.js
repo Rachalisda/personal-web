@@ -37,10 +37,8 @@ export default function Page() {
         <div className="container mx-auto flex flex-col md:flex-row md:space-x-8 md:space-y-0 items-stretch">
           {publicRepos.slice(0, 3).map((repo, idx) => (
             <div key={repo.id} className="w-full md:w-1/3 flex">
-              <a
-                href={repo.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`/projects/${repo.name}`}
                 className="flex-grow flex flex-col h-full"
               >
                 <Card
@@ -53,7 +51,7 @@ export default function Page() {
                 >
                   {repo.description || "No description provided."}
                 </Card>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -70,7 +68,7 @@ export default function Page() {
       </section>
 
       {/* Call To Action */}
-      <Contact></Contact>
+      <Contact />
     </main>
   );
 }
