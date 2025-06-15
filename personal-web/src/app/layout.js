@@ -14,18 +14,21 @@ const poppins = Poppins({
   weight: ["300"],
 });
 
+const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
-      <NavBar />
-          <div className="scroll-container content min-h-screen flex flex-col">
-            <main className="flex-grow">
+        <NavBar />
+        <div className="scroll-container content min-h-screen flex flex-col">
+          <main className="flex-grow">
+            <FormspreeProvider project={formspreeId}>
               {children}
-              
-            </main>
-            <Footer />
-          </div>
+            </FormspreeProvider>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

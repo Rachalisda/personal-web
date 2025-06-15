@@ -8,8 +8,8 @@ import ThankYouModal from '@/app/styles/thank-you-modal';
 
 export default function ContactPage() {
   const [isOpen, setIsOpen] = useState(false);
-  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID);
- 
+  const [state, handleSubmit] = useForm("xvgrrqbb");
+
    // Watch for form submission success to open the modal
   useEffect(() => {
     if (state.succeeded) {
