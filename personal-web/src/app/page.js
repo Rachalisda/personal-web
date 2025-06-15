@@ -40,7 +40,7 @@ export default function Page() {
 
       {/* Projects Section */}
       <section className="bg-[var(--background)] py-12 px-4">
-        <h2 className="text-2xl font-semibold text-center mb-8">Main 3 Projects</h2>
+        <h1 className="text-2xl font-semibold text-center mb-8">Main 3 Projects</h1>
 
         <div className="container mx-auto flex flex-col md:flex-row md:space-x-8 md:space-y-0 items-stretch">
           {publicRepos.slice(0, 3).map((repo, idx) => (
