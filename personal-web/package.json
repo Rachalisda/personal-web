@@ -3,18 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "generate-links": "node src/app/Code/links.js",
-    "dev": "npm run generate-links && next dev --turbopack",
-    "build": "npm run generate-links && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "generate-constants": "node src/app/Code/generateConstants.js"
-  },
+      "generate-links": "node src/app/Code/links.js",
+      "dev": "npm run generate-links && next dev --turbopack",
+      "build": "npm run generate-links && next build",
+      "start": "next start",
+     "lint": "next lint",
+     "generate-constants": "node src/app/Code/generateConstants.js",
+     "get-repos": "node src/scripts/get-repos.js"
+    },
   "dependencies": {
-    "@formspree/react": "^3.0.0",
     "next": "15.2.4",
-    "node-fetch": "^3.3.2",
-    "nodemailer": "^7.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0"

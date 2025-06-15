@@ -6,13 +6,13 @@ import publicRepos from '@/app/data/github-repos.json';
 import Contact from './styles/contact-section';
 import navLinks from '@/app/data/links.json';
 
-
 const aboutLink = navLinks.find(link => link.label === 'About')?.href || '/about';
 
 export default function Page() {
   return (
     <main className="flex-grow">
       {/* Hero Section */}
+    
       <div className="bg-[var(--background)]">
         <div className="container mx-auto relative min-h-[400px] px-4 py-8">
           <div className="block sm:hidden absolute inset-0 z-0">
