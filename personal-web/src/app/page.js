@@ -4,6 +4,10 @@ import Card from './styles/card';
 import Link from "next/link";
 import publicRepos from '@/app/data/github-repos.json';
 import Contact from './styles/contact-section';
+import navLinks from '@/app/data/links.json';
+
+
+const aboutLink = navLinks.find(link => link.label === 'About')?.href || '/about';
 
 export default function Page() {
   return (
@@ -21,7 +25,11 @@ export default function Page() {
                 We have what you need. More content is coming soon.
                 <span className="absolute left-0 bottom-[-10px] w-[50%] h-[2px] bg-[var(--text-color)] opacity-50"></span>
               </p>
-              <Button variant="primary">OK!</Button>
+              <div>
+              <Link href={aboutLink}>
+                <Button variant="primary">Learn About Me</Button>
+              </Link>
+            </div>
             </div>
             <div className="hidden sm:block sm:w-1/2 relative z-0">
               <div className="bg-[var(--foreground)] h-[400px] w-full p-10 rounded-lg shadow-lg" />
@@ -62,7 +70,7 @@ export default function Page() {
 
         <div className="text-center">
           <Link href="/projects">
-            <Button variant="secondary">Take me to More</Button>
+            <Button variant="secondary">See More Projects</Button>
           </Link>
         </div>
       </section>
