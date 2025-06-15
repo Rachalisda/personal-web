@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+
 const dataDir = path.join(process.cwd(), 'src', 'app', 'data');
 const excludedRoutes = ['privacy', 'terms'];
-const pagesDir = path.join(__dirname, '..');const links = [];
+const pagesDir = path.join(__dirname, '..');
+const links = [];
 
 function walk(dir, base = '') {
   const files = fs.readdirSync(dir);
@@ -17,6 +19,9 @@ function walk(dir, base = '') {
         walk(fullPath, path.join(base, file));
       }
     } else if (file === 'page.js' && !isExcluded) {
+      // ✅ Skip dynamic route folders like [slug]
+      if (base.includes('[') || base.includes(']')) continue;
+
       const route = base === '' ? '/' : `/${base}`;
       links.push({
         label: route === '/' ? 'Home' : capitalize(base),
@@ -31,7 +36,7 @@ function capitalize(s) {
 }
 
 walk(pagesDir);
-console.log(links)
+console.log(links);
 
 // Reorder links so Home is first and Contact is last
 const home = links.find(link => link.label.toLowerCase() === 'home');
@@ -46,11 +51,11 @@ const orderedLinks = [
   ...(contact ? [contact] : []),
 ];
 
-if(!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
 }
 
 fs.writeFileSync(
-  path.join(dataDir, '/links.json'),
+  path.join(dataDir, 'links.json'),
   JSON.stringify(orderedLinks, null, 2)
 );

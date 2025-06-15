@@ -8,10 +8,6 @@
     "href": "/about"
   },
   {
-    "label": "Projects/[name]",
-    "href": "/projects/[name]"
-  },
-  {
     "label": "Projects",
     "href": "/projects"
   },
