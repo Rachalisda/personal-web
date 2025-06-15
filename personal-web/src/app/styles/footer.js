@@ -1,20 +1,20 @@
 // components/Footer.jsx
 import Link from "next/link";
+import links from "@/app/data/links.json";
+import constants from "@/app/Code/constants";
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 py-8">
       <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
         {/* Quick links */}
-        <div>
-          <h4 className="font-semibold mb-2">Site</h4>
-          <ul className="space-y-1">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/projects">Projects</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
-        </div>
+        <ul className="footer-links">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href}>{link.label}</Link>
+          </li>
+        ))}
+      </ul>
 
         {/* Legal */}
         <div>
@@ -29,8 +29,8 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-2">Social</h4>
           <ul className="space-y-1">
-            <li><a href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter</a></li>
-            <li><a href="https://github.com/yourhandle"  target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href={constants.linkedin}  target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href={constants.github}   target="_blank" rel="noopener">GitHub</a></li>
           </ul>
         </div>
 
@@ -38,9 +38,7 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-2">Contact</h4>
           <p className="text-sm">
-            123 Main St.<br/>
-            Framingham, MA<br/>
-            <a href="mailto:hi@example.com">hi@example.com</a>
+            <a href={`mailto:${constants.email}`}>{constants.email}</a>
           </p>
         </div>
       </div>

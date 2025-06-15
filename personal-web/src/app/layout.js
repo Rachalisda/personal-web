@@ -1,9 +1,12 @@
 "use client";
 
 import { Poppins } from "next/font/google";
-import Link from "next/link"; // Import Link for routing
+import Link from "next/link";
 import "./globals.css";
-import Footer from "./styles/footer.js"; // Adjust path if needed
+import Footer from "./styles/footer.js";
+import links from "./data/links.json";
+import NavBar from "./styles/nav.js";
+import { FormspreeProvider } from '@formspree/react';
 
 const poppins = Poppins({
   variable: "--font-sans",
@@ -15,40 +18,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
-        {/* Navigation Bar */}
-        <nav className="navbar">
-          <div className="nav-container">
-            {/* Logo that triggers navigation */}
-            <div className="logo">
-              <Link href="/">Rachal's Place</Link> {/* Link to Home */}
-            </div>
-            <ul className="nav-links">
-              <li>
-                <Link href="/">Home</Link> {/* Link to Home */}
-              </li>
-              <li>
-                <Link href="/about">About</Link> {/* Link to About */}
-              </li>
-              <li>
-                <Link href="/projects">Projects</Link> {/* Link to Contact */}
-              </li>
-              <li>
-                <Link href="/contact">Contact</Link> {/* Link to Contact */}
-              </li>
-            </ul>
+      <NavBar />
+          <div className="scroll-container content min-h-screen flex flex-col">
+            <main className="flex-grow">
+              {children}
+              
+            </main>
+            <Footer />
           </div>
-        </nav>
-
-        {/* Main Content */}
-        <div className="scroll-container content min-h-screen flex flex-col">
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
-      </div>
-        
       </body>
-      
     </html>
   );
 }

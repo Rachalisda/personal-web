@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import constants from "@/app/Code/constants";
+import Contact from '@/app/styles/contact-section';
 
 export default function AboutPage() {
   return (
@@ -7,10 +9,10 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center gap-10 mb-20">
         <div className="w-40 h-40 relative rounded-full overflow-hidden shadow-lg">
-         ]
+         
         </div>
         <div>
-          <h1 className="text-3xl font-bold mb-4">Hey, I’m [Your Name]</h1>
+          <h1 className="text-3xl font-bold mb-4">Hey, I’m {constants.firstname}</h1>
           <p className="text-lg max-w-xl">
             I specialize in building automation tools, clean dashboards, and data pipelines that make decision-making easier. My goal is to make data both beautiful and functional.
           </p>
@@ -37,7 +39,7 @@ export default function AboutPage() {
         <h2 className="text-2xl font-semibold mb-6">My Journey</h2>
         <ul className="space-y-6">
           <li>
-            <h3 className="font-semibold">🎓 Studied [Your Degree]</h3>
+            <h3 className="font-semibold">🎓 Studied {constants.degree}</h3>
             <p className="text-sm">Started my foundation in problem-solving and data logic.</p>
           </li>
           <li>
@@ -51,17 +53,8 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      {/* Call to Action */}
-      <section className="text-center py-10 border-t border-[var(--foreground)]">
-        <h2 className="text-2xl font-bold mb-4">Let’s Work Together</h2>
-        <p className="text-md mb-6">Got a project or idea? I’d love to hear it and bring it to life with data and design.</p>
-        <a
-          href="/contact"
-          className="inline-block bg-[var(--emphasis)] text-[var(--background)] px-6 py-3 rounded-full hover:bg-[var(--emphasis-shadow)] transition"
-        >
-          Contact Me
-        </a>
-      </section>
+      <Contact></Contact>
+     
     </main>
   );
 }
