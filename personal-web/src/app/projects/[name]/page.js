@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import NotFound from './../../styles/readme-not-found';
 
 export async function generateStaticParams() {
   const repos = require('@/app/data/github-repos.json');
@@ -12,7 +13,9 @@ export default async function ProjectPage({ params }) {
   const { name } = params;
   const url = `https://raw.githubusercontent.com/Rachalisda/${name}/main/README.md`;
   const res = await fetch(url);
-  if (!res.ok) return <p>README not found for {name}.</p>;
+  if (!res.ok) {
+  return <NotFound repoName={name} />;
+  }
   const markdown = await res.text();
 
   return (
