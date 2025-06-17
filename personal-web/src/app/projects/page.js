@@ -21,7 +21,7 @@ export default function ProjectsPage() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {publicRepos.map((repo) => (
-            <div key={repo.id} className="bg-gray-800 p-4 rounded-md shadow-md">
+            <div key={repo.id} className="bg-[var(--foreground)] p-4 rounded-md shadow-md">
               <h2 className="text-lg font-semibold mb-2">{formatTitle(repo.name)}</h2>
               <p className="text-sm mb-2">{repo.description || 'No description provided.'}</p>
               <div className="flex flex-wrap gap-2 text-xs mb-2">

@@ -2,14 +2,16 @@
   "name": "personal-web",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+    "scripts": {
       "generate-links": "node src/app/Code/links.js",
-      "dev": "npm run generate-links && next dev --turbopack",
-      "build": "npm run generate-links && next build",
+      "generate-constants": "node src/app/Code/constants.js",
+      "get-repos": "node src/scripts/get-repos.js",
+
+      "dev": "npm run generate-links && npm run generate-constants && npm run get-repos && next dev --turbopack",
+      "build": "npm run generate-links && npm run generate-constants && npm run get-repos && next build",
+
       "start": "next start",
-     "lint": "next lint",
-     "generate-constants": "node src/app/Code/generateConstants.js",
-     "get-repos": "node src/scripts/get-repos.js"
+      "lint": "next lint"
     },
   "dependencies": {
     "next": "15.2.4",
